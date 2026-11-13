@@ -10,9 +10,10 @@ from pathlib import Path
 
 from online_school.catalog import load_assignments
 from online_school.errors import CatalogError
-from online_school.jsonl_import import import_jsonl
+from online_school.jsonl_import import import_source
 from online_school.repository import InMemorySubmissionRepository
 from online_school.service import IntakeService
+from online_school.sources import JsonlSubmissionSource
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -46,8 +47,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 2
     service = IntakeService(InMemorySubmissionRepository(), catalog)
     try:
-        with args.file.open(encoding="utf-8") as handle:
-            report = import_jsonl(handle, service)
+        with JsonlSubmissionSource(args.file) as source:
+            report = import_source(source, service)
     except OSError as exc:
         name = exc.filename or args.file
         print(f"Не удалось прочитать файл сдач: {name}", file=sys.stderr)

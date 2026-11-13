@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from online_school.errors import FORMAT_ERROR, ErrorCode, IntakeRejected
 from online_school.models import Submission
 from online_school.service import IntakeService
+from online_school.sources import SubmissionSource
 
 
 @dataclass(frozen=True, slots=True)
@@ -74,6 +75,33 @@ def import_jsonl(lines: Iterable[str], service: IntakeService) -> ImportReport:
         except IntakeRejected as exc:
             errors.extend(
                 ImportIssue(line_number, detail.code, detail.field, detail.message)
+                for detail in exc.errors
+            )
+            continue
+        if outcome.kind == "accepted":
+            accepted.append(outcome.submission)
+        else:
+            duplicate.append(outcome.submission)
+    return ImportReport(tuple(accepted), tuple(duplicate), tuple(errors))
+
+
+def import_source(source: SubmissionSource, service: IntakeService) -> ImportReport:
+    """Импортировать записи из любого источника с тем же сервисом приёма."""
+
+    accepted: list[Submission] = []
+    duplicate: list[Submission] = []
+    errors: list[ImportIssue] = []
+    for record in source.records():
+        if record.format_error is not None:
+            errors.append(
+                ImportIssue(record.line, FORMAT_ERROR, None, record.format_error)
+            )
+            continue
+        try:
+            outcome = service.accept(record.payload)
+        except IntakeRejected as exc:
+            errors.extend(
+                ImportIssue(record.line, detail.code, detail.field, detail.message)
                 for detail in exc.errors
             )
             continue

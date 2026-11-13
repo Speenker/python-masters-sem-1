@@ -14,6 +14,7 @@ from online_school.errors import CatalogError
 class Assignment:
     assignment_id: str
     title: str
+    allowed_templates: tuple[str, ...] = ()
 
 
 class AssignmentCatalog:
@@ -73,7 +74,7 @@ def catalog_from_payload(raw: object) -> AssignmentCatalog:
 def _assignment_from_item(item: object, index: int) -> Assignment:
     if not isinstance(item, Mapping):
         raise CatalogError(f"Задание №{index} должно быть объектом.")
-    allowed = {"assignment_id", "title"}
+    allowed = {"assignment_id", "title", "allowed_templates"}
     for key in item:
         if key not in allowed:
             raise CatalogError(f"Неизвестное поле задания №{index}: «{key}».")
@@ -83,4 +84,11 @@ def _assignment_from_item(item: object, index: int) -> Assignment:
         raise CatalogError(f"У задания №{index} пустой или нестроковый assignment_id.")
     if not isinstance(title, str) or title.strip() == "":
         raise CatalogError(f"У задания №{index} пустой или нестроковый title.")
-    return Assignment(assignment_id, title)
+    raw_templates = item.get("allowed_templates", [])
+    if not isinstance(raw_templates, list) or not all(
+        isinstance(template, str) and template.strip() for template in raw_templates
+    ):
+        raise CatalogError(
+            f"У задания №{index} allowed_templates должен быть списком непустых строк."
+        )
+    return Assignment(assignment_id, title, tuple(raw_templates))
