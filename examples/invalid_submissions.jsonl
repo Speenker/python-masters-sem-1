@@ -1,0 +1,6 @@
+{broken
+{"submission_id":"sub-010","student_id":"","assignment_id":"py-intro-1","timestamp":"2026-09-01T10:15:00+03:00","text":"Пустой студент.","code":"x = 1\n","ai_declaration":{"used":false,"description":""}}
+{"submission_id":"sub-011","student_id":"student-1","assignment_id":"py-intro-1","timestamp":"2026-09-01T10:15:00","text":"Без зоны.","code":"x = 1\n","ai_declaration":{"used":false,"description":""}}
+{"submission_id":"sub-012","student_id":"student-1","assignment_id":"py-intro-1","timestamp":"2026-09-01T10:15:00+03:00","text":"Лишнее поле.","code":"x = 1\n","ai_declaration":{"used":false,"description":""},"grade":5}
+{"submission_id":"sub-900","student_id":"student-9","assignment_id":"py-intro-1","timestamp":"2026-09-01T12:00:00Z","text":"Строка после ошибок.","code":"x = 1\n","ai_declaration":{"used":false,"description":""}}
+{"submission_id":"sub-013","student_id":"student-1","assignment_id":"py-intro-1","timestamp":"2026-09-01T10:15:00+03:00","text":"Пустая декларация.","code":"x = 1\n","ai_declaration":{"used":true,"description":"  "}}
