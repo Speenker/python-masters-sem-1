@@ -19,6 +19,18 @@ from online_school.jsonl_import import import_jsonl, import_source
 from online_school.models import AiDeclaration, Submission
 from online_school.repository import InMemorySubmissionRepository
 from online_school.service import AcceptOutcome, IntakeService
+from online_school.similarity import (
+    SimilarityScore,
+    SourceEvidence,
+    SubmissionPair,
+    compare_ast_code,
+    compare_submissions,
+    compare_token_code,
+    jaccard,
+    normalized_ast,
+    read_validate_features,
+    token_features,
+)
 from online_school.sources import (
     InMemorySubmissionSource,
     JsonlSubmissionSource,
@@ -49,6 +61,9 @@ __all__ = [
     "LengthAnalyzer",
     "RubricFeedback",
     "Submission",
+    "SubmissionPair",
+    "SimilarityScore",
+    "SourceEvidence",
     "SubmissionSource",
     "TemplateAnalyzer",
     "catalog_from_payload",
@@ -56,6 +71,13 @@ __all__ = [
     "import_jsonl",
     "import_source",
     "load_assignments",
+    "compare_ast_code",
+    "compare_submissions",
+    "compare_token_code",
+    "jaccard",
+    "normalized_ast",
+    "read_validate_features",
+    "token_features",
     "timed",
     "validate_submission",
 ]
