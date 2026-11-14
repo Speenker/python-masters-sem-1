@@ -1,0 +1,196 @@
+{
+  "seed": 20261114,
+  "corpus_size": 30,
+  "pair_count": 42,
+  "positive_definition": [
+    "exact_copy",
+    "renamed_variables"
+  ],
+  "methods": {
+    "token": {
+      "threshold": 0.02631578947368421,
+      "review_required": "score is not null and score >= threshold",
+      "tuning": {
+        "threshold": 0.02631578947368421,
+        "true_positive": 14,
+        "false_positive": 6,
+        "true_negative": 1,
+        "false_negative": 0,
+        "uncertain": 0,
+        "precision": 0.7,
+        "recall": 1.0,
+        "f1": 0.8235294117647058,
+        "uncertain_rate": 0.0
+      },
+      "evaluation": {
+        "threshold": 0.02631578947368421,
+        "true_positive": 15,
+        "false_positive": 6,
+        "true_negative": 0,
+        "false_negative": 0,
+        "uncertain": 0,
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "f1": 0.8333333333333333,
+        "uncertain_rate": 0.0
+      },
+      "errors": [
+        {
+          "left": "sim-005",
+          "right": "sim-010",
+          "relation": "template_variant",
+          "template_only": true,
+          "score": 1.0,
+          "status": "ok",
+          "explanation": "Сходство рассчитано как Jaccard токеновых 3-грамм."
+        },
+        {
+          "left": "sim-021",
+          "right": "sim-023",
+          "relation": "independent",
+          "template_only": false,
+          "score": 0.3333333333333333,
+          "status": "ok",
+          "explanation": "Сходство рассчитано как Jaccard токеновых 3-грамм."
+        },
+        {
+          "left": "sim-021",
+          "right": "sim-026",
+          "relation": "independent",
+          "template_only": false,
+          "score": 0.5384615384615384,
+          "status": "ok",
+          "explanation": "Сходство рассчитано как Jaccard токеновых 3-грамм."
+        }
+      ]
+    },
+    "ast": {
+      "threshold": 0.9375,
+      "review_required": "score is not null and score >= threshold",
+      "tuning": {
+        "threshold": 0.9375,
+        "true_positive": 14,
+        "false_positive": 0,
+        "true_negative": 7,
+        "false_negative": 0,
+        "uncertain": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "uncertain_rate": 0.0
+      },
+      "evaluation": {
+        "threshold": 0.9375,
+        "true_positive": 15,
+        "false_positive": 1,
+        "true_negative": 5,
+        "false_negative": 0,
+        "uncertain": 0,
+        "precision": 0.9375,
+        "recall": 1.0,
+        "f1": 0.967741935483871,
+        "uncertain_rate": 0.0
+      },
+      "errors": [
+        {
+          "left": "sim-005",
+          "right": "sim-010",
+          "relation": "template_variant",
+          "template_only": true,
+          "score": 1.0,
+          "status": "ok",
+          "explanation": "AST сравнен после последовательной нормализации имён."
+        }
+      ]
+    }
+  },
+  "profiling": {
+    "seed": 20261114,
+    "repeats": 3,
+    "sizes": {
+      "100": {
+        "runs": [
+          {
+            "repeat": 1,
+            "wall_ms": 6.102999999939129,
+            "peak_memory_kib": 190.529296875,
+            "feature_sets": 100.0
+          },
+          {
+            "repeat": 2,
+            "wall_ms": 6.256799999960094,
+            "peak_memory_kib": 195.216796875,
+            "feature_sets": 100.0
+          },
+          {
+            "repeat": 3,
+            "wall_ms": 5.636999999978798,
+            "peak_memory_kib": 120.966796875,
+            "feature_sets": 100.0
+          }
+        ],
+        "median_wall_ms": 6.102999999939129,
+        "mean_wall_ms": 5.9989333332926735,
+        "median_peak_memory_kib": 190.529296875,
+        "mean_peak_memory_kib": 168.904296875
+      },
+      "1000": {
+        "runs": [
+          {
+            "repeat": 1,
+            "wall_ms": 57.61419999998907,
+            "peak_memory_kib": 1700.1552734375,
+            "feature_sets": 1000.0
+          },
+          {
+            "repeat": 2,
+            "wall_ms": 63.45930000009048,
+            "peak_memory_kib": 1655.6630859375,
+            "feature_sets": 1000.0
+          },
+          {
+            "repeat": 3,
+            "wall_ms": 62.088599999924554,
+            "peak_memory_kib": 1502.1787109375,
+            "feature_sets": 1000.0
+          }
+        ],
+        "median_wall_ms": 62.088599999924554,
+        "mean_wall_ms": 61.0540333333347,
+        "median_peak_memory_kib": 1655.6630859375,
+        "mean_peak_memory_kib": 1619.3323567708333
+      },
+      "5000": {
+        "runs": [
+          {
+            "repeat": 1,
+            "wall_ms": 321.68620000004466,
+            "peak_memory_kib": 8230.36328125,
+            "feature_sets": 5000.0
+          },
+          {
+            "repeat": 2,
+            "wall_ms": 410.70410000008906,
+            "peak_memory_kib": 8055.08203125,
+            "feature_sets": 5000.0
+          },
+          {
+            "repeat": 3,
+            "wall_ms": 341.30100000004404,
+            "peak_memory_kib": 8108.23828125,
+            "feature_sets": 5000.0
+          }
+        ],
+        "median_wall_ms": 341.30100000004404,
+        "mean_wall_ms": 357.89710000005925,
+        "median_peak_memory_kib": 8108.23828125,
+        "mean_peak_memory_kib": 8131.227864583333
+      }
+    }
+  },
+  "notes": [
+    "review_required означает сигнал для ручного разбора, а не доказательство нарушения.",
+    "template_variant исключён из positive: разрешённый шаблон не должен превращаться в обвинение.",
+    "Профилирование измеряет извлечение и хранение token-признаков, не качество на реальных работах."
+  ]
+}

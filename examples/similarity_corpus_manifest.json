@@ -1,13 +1,16 @@
 {
   "description": "Учебный корпус лабораторной 2, не реальные студенческие работы.",
   "families": {
-    "family-sum-direct": ["sim-001", "sim-002", "sim-008", "sim-011", "sim-014", "sim-016", "sim-019", "sim-020", "sim-021", "sim-024", "sim-027", "sim-028", "sim-029", "sim-030"],
-    "family-sum-renamed": ["sim-003", "sim-006", "sim-012", "sim-015", "sim-018", "sim-022", "sim-025"],
-    "family-sum-independent": ["sim-004", "sim-007", "sim-009", "sim-013", "sim-017", "sim-023", "sim-026"],
-    "family-sum-template": ["sim-005", "sim-010"]
+    "tuning-direct": ["sim-001", "sim-002", "sim-008", "sim-011", "sim-014", "sim-016", "sim-019", "sim-020"],
+    "tuning-renamed": ["sim-003", "sim-006", "sim-012", "sim-015", "sim-018"],
+    "tuning-independent": ["sim-004", "sim-007", "sim-009", "sim-013", "sim-017"],
+    "evaluation-direct": ["sim-021", "sim-024", "sim-027", "sim-028", "sim-029", "sim-030"],
+    "evaluation-renamed": ["sim-022", "sim-025"],
+    "evaluation-independent": ["sim-023", "sim-026"],
+    "evaluation-template": ["sim-005", "sim-010"]
   },
   "splits": {
-    "tuning": ["family-sum-direct", "family-sum-renamed", "family-sum-independent"],
-    "evaluation": ["family-sum-template"]
+    "tuning": ["tuning-direct", "tuning-renamed", "tuning-independent"],
+    "evaluation": ["evaluation-direct", "evaluation-renamed", "evaluation-independent", "evaluation-template"]
   }
 }

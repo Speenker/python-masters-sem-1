@@ -154,6 +154,15 @@ def compare_token_code(
 ) -> SimilarityScore:
     left = token_features(left_code, template_lines)
     right = token_features(right_code, template_lines)
+    return compare_token_features(left, right)
+
+
+def compare_token_features(
+    left: TokenFeatures,
+    right: TokenFeatures,
+) -> SimilarityScore:
+    """Сравнить уже рассчитанные признаки без повторного token-разбора."""
+
     evidence = left.evidence + right.evidence
     if left.error or right.error:
         errors = "; ".join(error for error in (left.error, right.error) if error)
@@ -251,6 +260,11 @@ def compare_submissions(
         for submission in submissions
         if assignment_id is None or submission.assignment_id == assignment_id
     )
+    templates = frozenset(template_lines)
+    features = {
+        submission.submission_id: token_features(submission.code, templates)
+        for submission in items
+    }
     for index, left in enumerate(items):
         for right in items[index + 1 :]:
             if left.submission_id == right.submission_id:
@@ -260,7 +274,7 @@ def compare_submissions(
             yield SubmissionPair(
                 left,
                 right,
-                compare_token_code(left.code, right.code, template_lines=template_lines),
+                compare_token_features(features[left.submission_id], features[right.submission_id]),
                 compare_ast_code(left.code, right.code),
             )
 

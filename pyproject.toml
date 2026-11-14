@@ -1,7 +1,7 @@
 [project]
 name = "online-school"
 version = "0.1.0"
-description = "Приём сдач онлайн-школы: этап А лабораторной 1"
+description = "Приём сдач и анализ сходства учебных работ"
 requires-python = ">=3.12"
 dependencies = []
 
@@ -10,6 +10,7 @@ dev = ["pytest>=8"]
 
 [project.scripts]
 school-import = "online_school.cli:main"
+similarity-experiment = "online_school.experiments:main"
 
 [build-system]
 requires = ["setuptools>=68"]

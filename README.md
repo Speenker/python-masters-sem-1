@@ -108,8 +108,19 @@ report = service.analyze(
 Учебный корпус находится в `examples/similarity_corpus.jsonl`, его происхождение
 и разбиение описаны в `examples/similarity_corpus_manifest.json`, а разметка
 пар — в `examples/similarity_pair_labels.jsonl`. В корпусе 30 синтетических
-сдач и 40 размеченных пар; данные не предназначены для выводов о реальных
+сдач и 42 размеченные пары; данные не предназначены для выводов о реальных
 студентах.
+
+Эксперимент запускается воспроизводимо:
+
+```powershell
+.\.venv\Scripts\python -m online_school.experiments --output reports\lab-2-experiment.json
+```
+
+Он выбирает порог только на tuning split, считает confusion matrix,
+precision/recall/F1 и долю неопределённых результатов на evaluation split,
+а также три повтора профилирования извлечения признаков для 100, 1000 и 5000
+синтетических записей.
 
 ## Где что происходит
 
